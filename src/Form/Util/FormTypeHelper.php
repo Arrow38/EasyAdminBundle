@@ -2,8 +2,8 @@
 
 namespace EasyCorp\Bundle\EasyAdminBundle\Form\Util;
 
-use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\CodeEditorType;
+use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminDividerType;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFormType;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminGroupType;
