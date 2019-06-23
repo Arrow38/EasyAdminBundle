@@ -16,10 +16,6 @@ import 'codemirror/mode/yaml-frontmatter/yaml-frontmatter';
 import 'codemirror/mode/yaml/yaml';
 
 document.querySelectorAll('[data-easyadmin-code-editor]').forEach(function(codeBlock) {
-    if (codeBlock.dataset.hasBeenCreated) {
-        return;
-    }
-
     CodeMirror.fromTextArea(codeBlock, {
         autocapitalize: false,
         autocorrect: false,
@@ -32,6 +28,4 @@ document.querySelectorAll('[data-easyadmin-code-editor]').forEach(function(codeB
         tabSize: codeBlock.dataset.tabSize,
         theme: 'default',
     });
-
-    codeBlock.dataset.hasBeenCreated = true;
 });

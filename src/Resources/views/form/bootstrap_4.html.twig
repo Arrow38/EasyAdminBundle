@@ -478,16 +478,7 @@
 
 {# EasyAdmin's CodeEditor form type #}
 {% block easyadmin_code_editor_widget %}
-    <textarea id="{{ id }}" name="{{ name }}" data-easyadmin-code-editor data-language="{{ language }}" data-tab-size="{{ tabSize }}" data-indent-with-tabs="{{ indentWithTabs ? 'true' : 'false' }}">{{ data }}</textarea>
-
-    <script>
-        const easyadminConfig = window.easyadminConfig || {};
-        easyadminConfig['codeEditor'] = {
-            'jsUrl': '{{ asset("bundles/easyadmin/form-type-code.js") }}',
-            'cssUrl': '{{ asset("bundles/easyadmin/form-type-code.css") }}',
-        };
-        window.easyadminConfig = easyadminConfig;
-    </script>
+    <textarea id="{{ id }}" name="{{ name }}" data-easyadmin-code-editor data-language="{{ language }}" data-tab-size="{{ tabSize }}" data-indent-with-tabs="{{ indentWithTabs ? 'true' : 'false' }}" data-js-url="{{ asset("bundles/easyadmin/form-type-code.js") }}" data-css-url="{{ asset("bundles/easyadmin/form-type-code.css") }}">{{ data }}</textarea>
 
     {% if height is not null %}
         <style type="text/css">

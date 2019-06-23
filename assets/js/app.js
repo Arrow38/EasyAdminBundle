@@ -144,16 +144,17 @@ function createNavigationToggler() {
 // dynamically only when there are code editor fields in the page
 function createCodeEditorFields()
 {
-    if (document.querySelectorAll('[data-easyadmin-code-editor]').length === 0) {
+    const codeEditorElements = document.querySelectorAll('[data-easyadmin-code-editor]');
+    if (codeEditorElements.length === 0) {
         return;
     }
 
     const codeEditorJs = document.createElement('script');
-    codeEditorJs.setAttribute('src', window.easyadminConfig.codeEditor.jsUrl);
+    codeEditorJs.setAttribute('src', codeEditorElements[0].dataset.jsUrl);
 
     const codeEditorCss = document.createElement('link');
     codeEditorCss.setAttribute('rel', 'stylesheet');
-    codeEditorCss.setAttribute('href', window.easyadminConfig.codeEditor.cssUrl);
+    codeEditorCss.setAttribute('href', codeEditorElements[0].dataset.cssUrl);
 
     document.querySelector('head').appendChild(codeEditorCss);
     document.querySelector('body').appendChild(codeEditorJs);
