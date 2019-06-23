@@ -19,24 +19,6 @@
     <input type="hidden" name="referer" value="{{ app.request.query.get('referer', '') }}"/>
 {%- endblock form_start %}
 
-{% block form_end -%}
-    {{- parent() -}}
-
-    <script>
-        if (document.querySelectorAll('[data-easyadmin-code-editor]').length > 0) {
-            const codeEditorJs = document.createElement('script');
-            codeEditorJs.setAttribute('src', '{{ asset("bundles/easyadmin/form-type-code.js") }}');
-
-            const codeEditorCss = document.createElement('link');
-            codeEditorCss.setAttribute('rel', 'stylesheet');
-            codeEditorCss.setAttribute('href', '{{ asset("bundles/easyadmin/form-type-code.css") }}');
-
-            document.querySelector('head').appendChild(codeEditorCss);
-            document.querySelector('body').appendChild(codeEditorJs);
-        }
-    </script>
-{%- endblock form_end %}
-
 {# Widgets #}
 
 {% block form_widget %}
@@ -497,6 +479,15 @@
 {# EasyAdmin's CodeEditor form type #}
 {% block easyadmin_code_editor_widget %}
     <textarea id="{{ id }}" name="{{ name }}" data-easyadmin-code-editor data-language="{{ language }}" data-tab-size="{{ tabSize }}" data-indent-with-tabs="{{ indentWithTabs ? 'true' : 'false' }}">{{ data }}</textarea>
+
+    <script>
+        const easyadminConfig = window.easyadminConfig || {};
+        easyadminConfig['codeEditor'] = {
+            'jsUrl': '{{ asset("bundles/easyadmin/form-type-code.js") }}',
+            'cssUrl': '{{ asset("bundles/easyadmin/form-type-code.css") }}',
+        };
+        window.easyadminConfig = easyadminConfig;
+    </script>
 
     {% if height is not null %}
         <style type="text/css">

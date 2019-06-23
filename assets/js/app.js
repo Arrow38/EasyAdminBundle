@@ -28,6 +28,7 @@ window.addEventListener('load', function() {
     $(document).on('easyadmin.collection.item-added', createAutoCompleteFields);
     createContentResizer();
     createNavigationToggler();
+    createCodeEditorFields();
 });
 
 function createNullableControls() {
@@ -137,4 +138,23 @@ function createNavigationToggler() {
             modalBackdrop = null;
         }
     });
+}
+
+// Code editor fields require extra JavaScript dependencies, which are loaded
+// dynamically only when there are code editor fields in the page
+function createCodeEditorFields()
+{
+    if (document.querySelectorAll('[data-easyadmin-code-editor]').length === 0) {
+        return;
+    }
+
+    const codeEditorJs = document.createElement('script');
+    codeEditorJs.setAttribute('src', window.easyadminConfig.codeEditor.jsUrl);
+
+    const codeEditorCss = document.createElement('link');
+    codeEditorCss.setAttribute('rel', 'stylesheet');
+    codeEditorCss.setAttribute('href', window.easyadminConfig.codeEditor.cssUrl);
+
+    document.querySelector('head').appendChild(codeEditorCss);
+    document.querySelector('body').appendChild(codeEditorJs);
 }
