@@ -23,7 +23,7 @@
     {{- parent() -}}
 
     <script>
-        if (document.querySelectorAll('[data-easyadmin-code]').length > 0) {
+        if (document.querySelectorAll('[data-easyadmin-code-editor]').length > 0) {
             const codeEditorJs = document.createElement('script');
             codeEditorJs.setAttribute('src', '{{ asset("bundles/easyadmin/form-type-code.js") }}');
 
@@ -494,16 +494,16 @@
     {{- block('form_label') -}}
 {% endblock easyadmin_autocomplete_inner_label %}
 
-{# EasyAdminCode form type #}
-{% block easyadmin_code_widget %}
-    <textarea id="{{ id }}" name="{{ name }}" data-easyadmin-code data-language="{{ language }}" data-tab-size="{{ tabSize }}" data-indent-with-tabs="{{ indentWithTabs ? 'true' : 'false' }}">{{ data }}</textarea>
+{# EasyAdmin's CodeEditor form type #}
+{% block easyadmin_code_editor_widget %}
+    <textarea id="{{ id }}" name="{{ name }}" data-easyadmin-code-editor data-language="{{ language }}" data-tab-size="{{ tabSize }}" data-indent-with-tabs="{{ indentWithTabs ? 'true' : 'false' }}">{{ data }}</textarea>
 
     {% if height is not null %}
         <style type="text/css">
             #{{ id }} + .CodeMirror { height: {{ height }}px !important; max-height: none; }
         </style>
     {% endif %}
-{% endblock easyadmin_code_widget %}
+{% endblock easyadmin_code_editor_widget %}
 
 {# EasyAdminSection form type #}
 {% block easyadmin_section_row %}

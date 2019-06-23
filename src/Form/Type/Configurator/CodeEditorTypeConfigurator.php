@@ -2,15 +2,15 @@
 
 namespace EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator;
 
-use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminCodeType;
+use EasyCorp\Bundle\EasyAdminBundle\Form\Type\CodeEditorType;
 use Symfony\Component\Form\FormConfigInterface;
 
 /**
- * This configurator is applied to any form field of type 'code'.
+ * This configurator is applied to any form field of type 'code_editor'.
  *
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class EasyAdminCodeTypeConfigurator implements TypeConfiguratorInterface
+class CodeEditorTypeConfigurator implements TypeConfiguratorInterface
 {
     /**
      * {@inheritdoc}
@@ -38,6 +38,6 @@ class EasyAdminCodeTypeConfigurator implements TypeConfiguratorInterface
      */
     public function supports($type, array $options, array $metadata): bool
     {
-        return \in_array($type, ['code', EasyAdminCodeType::class], true);
+        return \in_array($type, ['code_editor', CodeEditorType::class], true);
     }
 }

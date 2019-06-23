@@ -15,7 +15,7 @@ import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/yaml-frontmatter/yaml-frontmatter';
 import 'codemirror/mode/yaml/yaml';
 
-document.querySelectorAll('[data-easyadmin-code]').forEach(function(codeBlock) {
+document.querySelectorAll('[data-easyadmin-code-editor]').forEach(function(codeBlock) {
     if (codeBlock.dataset.hasBeenCreated) {
         return;
     }

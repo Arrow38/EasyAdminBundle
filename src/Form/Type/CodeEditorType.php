@@ -10,10 +10,9 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  */
-class EasyAdminCodeType extends AbstractType
+class CodeEditorType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -35,9 +34,8 @@ class EasyAdminCodeType extends AbstractType
             'height' => null,
             'tab_size' => 4,
             'indent_with_tabs' => false,
-            // the code editor can't autodetect the language, so let's use 'markdown' when
+            // the code editor can't autodetect the language, so 'markdown' is used when
             // no language is selected explicitly (because it's the most similar to regular text)
-            // also, define some shortcuts for better UX (e.g. 'js' === 'javascript')
             'language' => 'markdown',
         ]);
         $resolver->setAllowedTypes('height', ['null', 'int']);
@@ -45,6 +43,8 @@ class EasyAdminCodeType extends AbstractType
         $resolver->setAllowedTypes('indent_with_tabs', 'bool');
         $resolver->setAllowedTypes('language', 'string');
         $resolver->setAllowedValues('language', ['css', 'dockerfile', 'js', 'javascript', 'markdown', 'nginx', 'php', 'shell', 'sql', 'twig', 'xml', 'yaml-frontmatter', 'yaml']);
+
+        // define some programming language shortcuts for better UX (e.g. 'js' === 'javascript')
         $resolver->setNormalizer('language', static function (Options $options, $language) {
             if ('js' === $language) {
                 $language = 'javascript';
@@ -67,6 +67,6 @@ class EasyAdminCodeType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'easyadmin_code';
+        return 'easyadmin_code_editor';
     }
 }

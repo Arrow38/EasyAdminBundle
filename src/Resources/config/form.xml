@@ -45,8 +45,8 @@
 
         <!-- Type Configurators -->
 
-        <service id="easyadmin.form.type.configurator.code" public="false"
-                 class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\EasyAdminCodeTypeConfigurator">
+        <service id="easyadmin.form.type.configurator.code_editor" public="false"
+                 class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\CodeEditorTypeConfigurator">
             <tag name="easyadmin.form.type.configurator" priority="50" />
         </service>
 
